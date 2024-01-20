@@ -1,0 +1,35 @@
+body {
+    display: block;
+    background-color: burlywood;
+}
+
+div{
+    margin-bottom: 10rem;
+}
+h1{
+    color: brown;
+}
+li {
+    list-style-type: none;
+}
+
+li::before {
+    content: "#number";
+    background: lightgray;
+    border-radius: 1ch;
+    padding-inline: 1ch;
+    margin-inline-end: 1ch;
+  }
+
+.extra-info{
+    color: white;
+}
+
+.area-1.extra-info{
+    color: white;
+}
+
+.training-options{
+    color: black;
+    background-color: white;
+}
