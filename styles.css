@@ -14,12 +14,30 @@
 
 body {
     display: block;
-    background-color: burlywood;
+    background-color: var(--background-secondary-color);
     font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 div{
     margin-bottom: 10rem;
+}
+
+.area-1 {
+    background-color: var(--background-primary-color);
+}
+
+.form {
+    background-color: var(--background-primary-color-form);
+}
+
+.form h2 {
+    color: var(--text-color-light);
+}
+
+
+
+.dark {
+    background-color: var(--background-primary-color);
 }
 
 h1 { 
@@ -63,7 +81,3 @@ li::before {
     color: white;
 }
 
-.training-options{
-    color: black;
-    background-color: white;
-}
