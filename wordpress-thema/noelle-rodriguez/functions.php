@@ -212,7 +212,10 @@ function customize_dashboard() {
 }
 // run the function
 add_action('wp_dashboard_setup', 'customize_dashboard', 999 );
- 
+
+// replace the dashboard with my own anyway
+require get_template_directory() . '/inc/replace-dashboard.php';
+
 // Customize the admin navigation; remove menu items that I find are confusing for people who just want to edit the one page they have
 
 function customize_admin_navigation() {
@@ -263,8 +266,25 @@ function preset_some_admin_settings() {
 }
 add_action('init', 'preset_some_admin_settings');
 
-// replace the dashboard with my own
-require get_template_directory() . '/inc/replace-dashboard.php';
-
-// Turn off Gutenberg editor 
+// Turn off Gutenberg editor, blegh
 add_filter('use_block_editor_for_post', '__return_false');
+
+// Remove h1, h2 and formatted text option from the wysiwyg editor
+function change_editor_options($arr){
+    $arr['block_formats'] = 'Paragraph=p;Heading 3=h3;Heading 4=h4';
+    return $arr;
+}
+add_filter('tiny_mce_before_init', 'change_editor_options');
+
+
+// add Advanced Custom Fields settings for the Homepage template
+require get_template_directory() . '/inc/setup-ACF-home.php';
+
+function enqueue_form_handler_script() {
+    wp_enqueue_script('form-handler', get_template_directory_uri() . '/inc/setup-get-started-form.php', array('jquery'), null, true);
+    wp_localize_script('form-handler', 'your_ajax_url', admin_url('admin-ajax.php'));
+}
+
+add_action('wp_enqueue_scripts', 'enqueue_form_handler_script');
+
+wp_enqueue_script('custom-form-script', get_template_directory_uri() . '/js/form.js', array('jquery'), null, true);

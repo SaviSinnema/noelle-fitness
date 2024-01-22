@@ -17,6 +17,10 @@
 get_header();
 ?>
 
+<div class="get-started-form">
+<?php include get_template_directory() . '/get_started_form.php'; ?>
+</div>
+
 <?php if( get_field('general_logo') ): 
     $general_logo = get_field('general_logo'); //acf field name
     if( !empty( $general_logo ) ): ?>
@@ -29,7 +33,11 @@ get_header();
     <img src="<?php echo esc_url($header_photo['url']); ?>" alt="<?php echo esc_attr($header_photo['alt']); ?>" />
 <?php endif; endif; ?>
 
-<?php if( get_field('cta_form') ): the_field('cta_form'); endif; ?>
+<?php if( get_field('cta_form') ): ?>
+    <!-- get the ninja form code -->
+    <?php the_field('cta_form'); ?>
+
+<?php endif; ?>
 
 <hr>
 
@@ -97,6 +105,7 @@ get_header();
 
     <?php 
     $benefits_photo = get_field('benefits_photo'); //acf field name
+
     if( !empty( $benefits_photo ) ): ?>
         <img src="<?php echo esc_url($benefits_photo['url']); ?>" alt="<?php echo esc_attr($benefits_photo['alt']); ?>" />
     <?php endif; ?>
@@ -108,7 +117,10 @@ endif; ?>
 <hr>
 
 <?php if( get_field('inspirational_slogan') ): ?>
-    International slogan: <?php the_field('inspirational_slogan'); ?>
+    <section class="area-4">
+        <div class="filter"></div>
+        <p><?php the_field('inspirational_slogan'); ?></p>
+    </section>
 <?php endif; ?>
 
 <hr>
@@ -119,11 +131,44 @@ endif; ?>
     <?php 
         $picture_in_footer = get_sub_field('picture_in_footer'); //acf field name
         if( !empty( $picture_in_footer ) ): ?>
+
+<?php echo esc_url($picture_in_footer['url']); ?><br />
+
         <img src="<?php echo esc_url($picture_in_footer['url']); ?>" alt="<?php echo esc_attr($picture_in_footer['alt']); ?>" />
+
     <?php endif; ?>
 
     <?php the_sub_field('about_noelle_text'); ?>
+
+    <a href="<?php the_sub_field('instagram'); ?>">Instagram</a>
 <?php endwhile; endif; ?>
+
+<script>
+    let currentStep = 1;
+
+    function showStep(step) {
+        document.querySelectorAll('.form-step').forEach((el) => {
+            el.style.display = 'none';
+        });
+
+        document.getElementById(`step-${step}`).style.display = 'block';
+    }
+
+    function nextStep() {
+        if (currentStep < 3) {
+            currentStep++;
+            showStep(currentStep);
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 1) {
+            currentStep--;
+            showStep(currentStep);
+        }
+    }
+</script>
+
 
 <?php
 // get_sidebar();
