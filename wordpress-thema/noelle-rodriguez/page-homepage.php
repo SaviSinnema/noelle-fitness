@@ -18,7 +18,7 @@ get_header();
 ?>
 
 <div class="get-started-form">
-<?php include get_template_directory() . '/get_started_form.php'; ?>
+    <?php include get_template_directory() . '/get_started_form.php'; ?>
 </div>
 
 <?php if( get_field('general_logo') ): 
@@ -143,32 +143,8 @@ endif; ?>
     <a href="<?php the_sub_field('instagram'); ?>">Instagram</a>
 <?php endwhile; endif; ?>
 
-<script>
-    let currentStep = 1;
 
-    function showStep(step) {
-        document.querySelectorAll('.form-step').forEach((el) => {
-            el.style.display = 'none';
-        });
-
-        document.getElementById(`step-${step}`).style.display = 'block';
-    }
-
-    function nextStep() {
-        if (currentStep < 3) {
-            currentStep++;
-            showStep(currentStep);
-        }
-    }
-
-    function prevStep() {
-        if (currentStep > 1) {
-            currentStep--;
-            showStep(currentStep);
-        }
-    }
-</script>
-
+<script type="text/javascript" src="/wp-content/themes/noelle-rodriguez/js/form.js"></script>
 
 <?php
 // get_sidebar();

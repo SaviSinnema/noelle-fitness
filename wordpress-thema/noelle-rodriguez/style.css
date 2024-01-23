@@ -251,3 +251,13 @@ li::before {
 .form-step#step-1 {
     display: inherit;
 }
+
+fieldset {
+    display: block;
+    max-width: 500px;
+}
+
+label::before {
+    display: table;
+    content: " ";
+}

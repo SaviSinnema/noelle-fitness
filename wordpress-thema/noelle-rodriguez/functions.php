@@ -140,21 +140,8 @@ add_action( 'after_setup_theme', 'noelle_rodriguez_setup' );
 function noelle_rodriguez_scripts() {
 	wp_enqueue_style( 'noelle-rodriguez-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'noelle-rodriguez-style', 'rtl', 'replace' );
-
-	wp_enqueue_script( 'noelle-rodriguez-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
-	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-		wp_enqueue_script( 'comment-reply' );
-	}
 }
 add_action( 'wp_enqueue_scripts', 'noelle_rodriguez_scripts' );
-
-/**
- * Implement the Custom Header feature.
- */
-// require get_template_directory() . '/inc/custom-header.php';
-
-
 
 /**
  * Custom template tags for this theme.
@@ -281,10 +268,12 @@ add_filter('tiny_mce_before_init', 'change_editor_options');
 require get_template_directory() . '/inc/setup-ACF-home.php';
 
 function enqueue_form_handler_script() {
-    wp_enqueue_script('form-handler', get_template_directory_uri() . '/inc/setup-get-started-form.php', array('jquery'), null, true);
-    wp_localize_script('form-handler', 'your_ajax_url', admin_url('admin-ajax.php'));
+    // Localize the script with a nonce
+    // wp_localize_script('form-handler', 'ajax_object', array('nonce' => wp_create_nonce('noelle_nonce')));
+    // wp_enqueue_script('form-handler', get_template_directory_uri() . '/inc/form-handling.php', array('jquery'), null, true);
+
+    // Enqueue other scripts
+    wp_enqueue_script('custom-form-script', get_template_directory_uri() . '/js/form.js', array('jquery'), null, true);
 }
 
-add_action('wp_enqueue_scripts', 'enqueue_form_handler_script');
-
-wp_enqueue_script('custom-form-script', get_template_directory_uri() . '/js/form.js', array('jquery'), null, true);
+add_action('init', 'enqueue_form_handler_script');
