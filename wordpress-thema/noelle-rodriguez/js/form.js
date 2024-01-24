@@ -22,7 +22,7 @@ function showStep(currentStep) {
         el.style.display = 'none';
     });
 
-    document.getElementById(`step-${currentStep}`).style.display = 'block';
+    document.getElementById(`step-${currentStep}`).style.display = 'flex';
 
     addEventListener(currentStep);
 }
@@ -42,7 +42,6 @@ function prevStep() {
 }
 
 function submitForm() {
-    // Get form data
     const goal = document.querySelector('input[name=goal]:checked').value;
     const gender = document.querySelector('input[name=gender]:checked').value;
     const age = document.querySelector('input[name=age]:checked').value;
@@ -92,6 +91,6 @@ function submitForm() {
 }
 
 document.querySelector('.get-started-form form').addEventListener('submit', function (e) {
-    e.preventDefault(); // Prevents the default form submission
+    // e.preventDefault(); // Prevents the default form submission
     submitForm(); // Your AJAX form submission logic
 });
