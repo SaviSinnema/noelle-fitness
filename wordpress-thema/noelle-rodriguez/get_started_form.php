@@ -1,8 +1,9 @@
 <div class="form-wrapper">
     
     <div id="success">
-        <h2 class="step-name">Thank you for your application.</h2>
-        I will personally contact you when open spots are available!
+        <h2>Thank you for your application.</h2>
+        <p>I will personally contact you when open spots are available!</p>
+        <a href="/" class="cta">Go back</a>
     </div>
 
     <form id="get-started" action="<?php echo esc_url(get_permalink()); ?>#success" method="post">
@@ -30,7 +31,7 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="next-1">Next</button>
+                <button type="button" id="next-1"><span>Next</span></button>
             </div>
         </fieldset>
 
@@ -51,8 +52,8 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-2">Previous</button>
-                <button type="button" id="next-2">Next</button>
+                <button type="button" id="previous-2"><span>Previous</span></button>
+                <button type="button" id="next-2"><span>Next</span></button>
             </div>
 
         </fieldset>
@@ -84,8 +85,8 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-3">Previous</button>
-                <button type="button" id="next-3">Next</button>
+                <button type="button" id="previous-3"><span>Previous</span></button>
+                <button type="button" id="next-3"><span>Next</span></button>
             </div>
         </fieldset>
 
@@ -100,8 +101,8 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-4">Previous</button>
-                <button type="button" id="next-4">Next</button>
+                <button type="button" id="previous-4"><span>Previous</span></button>
+                <button type="button" id="next-4"><span>Next</span></button>
             </div>
         </div>
 
@@ -116,8 +117,8 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-5">Previous</button>
-                <button type="button" id="next-5">Next</button>
+                <button type="button" id="previous-5"><span>Previous</span></button>
+                <button type="button" id="next-5"><span>Next</span></button>
             </div>
         </div>
 
@@ -132,8 +133,8 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-6">Previous</button>
-                <button type="button" id="next-6">Next</button>
+                <button type="button" id="previous-6"><span>Previous</span></button>
+                <button type="button" id="next-6"><span>Next</span></button>
             </div>
         </div>
 
@@ -164,7 +165,7 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-7">Previous</button>
+                <button type="button" id="previous-7"><span>Previous</span></button>
                 <button type="submit">Submit</button>
             </div>
         </fieldset>

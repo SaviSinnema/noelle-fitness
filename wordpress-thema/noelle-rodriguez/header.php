@@ -46,9 +46,13 @@
     
     <?php if( get_field('header_photo') ): 
         $header_photo = get_field('header_photo'); ?>
-        <img src="<?php echo esc_url($header_photo['url']); ?>" alt="<?php echo esc_attr($header_photo['alt']); ?>" />
+        <div class="portrait">
+            <img src="<?php echo esc_url($header_photo['url']); ?>" alt="<?php echo esc_attr($header_photo['alt']); ?>" class="portrait_photo" />
+        </div>
     <?php else: ?>
-        <img src="<?php echo get_template_directory_uri(); ?>/media/noelle-rodriguez-small.jpeg" width="605" height="908" alt="Noelle Rodriguez smiling in the gym">
+        <div class="portrait">
+            <img src="<?php echo get_template_directory_uri(); ?>/media/noelle-rodriguez-small.jpeg" width="605" height="908" alt="Noelle Rodriguez smiling in the gym" class="portrait_photo">
+        </div>
     <?php endif; ?>
     
     <div class="get-started-form" id="get-started">

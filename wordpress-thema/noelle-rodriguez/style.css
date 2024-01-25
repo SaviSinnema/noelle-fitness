@@ -4,7 +4,7 @@ Theme URI: http://underscores.me/
 Author: Anneke Sinnema
 Author URI: https://www.annekesinnema.nl
 Description: Website voor Noelle Rodriguez Coaching
-Version: 1.0.0
+Version: 1.1.0
 Tested up to: 5.4
 Requires PHP: 5.6
 License: GNU General Public License v2 or later
@@ -69,13 +69,27 @@ section {
     max-inline-size: 1720px;
     margin-inline: auto;
     padding: 57px;
+    --negative-trick-margin: -57px;
 }
 
-@media screen and (min-width: 550px) {
+.blog header {
+    padding-block-end: 0;
+}
+
+@media screen and (min-width: 768px) {
+    header,
+    footer,
+    section {
+        padding-inline: 57px;
+    }
+}
+
+@media screen and (min-width: 958px) {
     header,
     footer,
     section {
         padding-inline: 95px;
+        --negative-trick-margin: -95px;
     }
 }
 
@@ -84,19 +98,21 @@ section {
     footer,
     section {
         padding-inline: 220px;
+        --negative-trick-margin: -220px;
     }
 }
 
 .dark {
     padding: 57px;
-    margin-inline: -57px;
+    margin-inline: var(--negative-trick-margin);
 }
 
 .dark ~ div {
     padding: 57px;
 }
 
-.puppy {
+.decorative img {
+    opacity: 0.3;
 }
 
 /* --------- */
@@ -107,8 +123,8 @@ section {
     padding-inline: 0;
     margin-block-start: 0;
     gap:  0;
-    grid-template-columns: 57px 1fr 57px;
-    grid-template-rows: 65px 1fr 1fr;
+    grid-template-columns: 45px 1fr 57px;
+    grid-template-rows: 90px 1fr 1fr;
     grid-template-areas: 
             ". logo ."
             ". sitename ."
@@ -124,6 +140,7 @@ section {
 
 .header.area-1 .logo {
     grid-area: logo;
+    margin-block: 1rem;
 }
 
 .header.area-1 h1 { 
@@ -144,16 +161,23 @@ section {
     color: var(--text-color-light);
 }
 
-.header.area-1 img {
+.header.area-1 .portrait {
     grid-row: 2 / -1;
     grid-column: 1 / -1;
     z-index: 0;
+    width: 100%;
+}
+
+.header.area-1 .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .header.area-1 .get-started-form {
     grid-area: form;
     z-index: 1;
-    margin-inline: -57px;
+    margin-inline: var(--negative-trick-margin);
 }
 
 .form-wrapper {
@@ -162,20 +186,8 @@ section {
     height: 100%;
 }
 
-form {
+.get-started-form {
     height: 100%;
-}
-
-/** for the form */
-.form-step {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
-
-.form-step#step-1 {
-    display: flex;
 }
 
 .get-started-form .step-name {
@@ -184,6 +196,7 @@ form {
     color: var(--text-color-dark);
     padding-bottom: 2rem;
     font-weight: 400;
+    text-wrap: pretty;
 }
 
 .get-started-form .form-step {
@@ -191,6 +204,14 @@ form {
     max-width: 100%;
     border: 0;
     padding: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.form-step#step-1 {
+    display: flex;
 }
 
 .get-started-form input[type="radio"] {
@@ -212,15 +233,22 @@ form {
 .get-started-form .field:has(textarea) label {
     width: 100%;
     text-align: center;
+    text-wrap: pretty;
 }
 
-.get-started-form .field textarea {
+.get-started-form .field:has(textarea) textarea {
     width: 100%;
     height: 100%;
-    margin-block: 2rem;
+    margin-block-end: 2rem;
     resize: vertical;
     background-color: var(--button-primary-color-form);
     border: 2px solid transparent;
+    min-height: 175px;
+}
+
+.get-started-form .field:has(textarea) {
+    display: flex;
+    flex-direction: column;
 }
 
 .get-started-form input[type="radio"]:focus + label,
@@ -233,7 +261,7 @@ form {
 .get-started-form input[type="tel"]:hover,
 .get-started-form input[type="email"]:focus:focus-visible,
 .get-started-form input[type="email"]:hover  {
-    border: 2px solid var(--text-color-dark);
+    border: 2px solid var(--red);
     outline: 0;
 }
 
@@ -243,11 +271,15 @@ form {
 }
 
 .get-started-form .formfooter {
-    display: flex;
-    flex-direction: column;
+    display: flex; 
     gap: 15px;
-    align-content: flex-end;
+    justify-content: space-between;
+    flex-direction: row;
     margin-top: auto;
+}
+
+.get-started-form button[id^="next"] {
+    margin-inline-start: auto;
 }
 
 .get-started-form button,
@@ -258,10 +290,10 @@ form {
 .get-started-form textarea {
     background-color: var(--button-primary-color-form);
     border: 2px solid transparent;
-    border-radius: 20px;
+    border-radius: 3.5rem;
     padding: 15px 30px;
     display: block;
-    margin-bottom: 1rem;
+    margin-block-end: 1rem;
     box-shadow: none;
     color: var(--text-color-dark);
     text-align: left;
@@ -273,23 +305,63 @@ form {
     text-align: center;
 }
 
-.get-started-form button[id^="previous"] {
-    background-color: var(--button-primary-color-form);
-    color: var(--text-color-dark);
-    width: max-content;
-    align-self: flex-start;
-    min-width: 78px;
-    font-size: 1rem;
+.get-started-form input[type="text"],
+.get-started-form input[type="tel"],
+.get-started-form input[type="email"] {
+    width: 100%;
+    margin-block: 1rem;
 }
 
 .get-started-form button[id^="next"],
-.get-started-form button[type="submit"] {
+.get-started-form button[type="submit"],
+.get-started-form button[id^="previous"]  {
     background-color: var(--button-secondary-color-form);
     color: var(--text-color-light);
     width: max-content;
     align-self: flex-end;
     min-width: 78px;
     font-size: 1rem;
+    text-align: center;
+    font-weight: 200;
+    border-radius: 3.5rem;
+}
+
+.get-started-form button[id^="previous"] {
+    background-color: var(--button-primary-color-form);
+    color: var(--text-color-dark);
+    align-self: flex-start;
+}
+
+.get-started-form button[id^="previous"]::before {
+    content: " ";
+    width: 33px;
+    height: 6px;
+    display: inline-block;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 33 6'><path stroke='2' fill='%231E1E1E' d='M.7 2.7v.6l2.4 2.4a.4.4 0 1 0 .6-.6L1.5 3 3.7.9A.4.4 0 1 0 3 .3L.7 2.7Zm32.3 0H1v.7h32v-.8Z' /></svg>");
+}
+
+.get-started-form button[id^="next"]::after {
+    content: " ";
+    width: 33px;
+    height: 6px;
+    display: inline-block;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 33 6'><path fill='%23fff' d='M32.3 3.3v-.6L29.9.3a.4.4 0 0 0-.6.6L31.5 3l-2.2 2.1a.4.4 0 0 0 .6.6l2.4-2.4ZM0 3.3h32v-.7H0v.8Z'/></svg>");
+}
+
+.get-started-form button[id^="previous"]:focus-within,
+.get-started-form button[id^="next"]:focus-within,
+.get-started-form button[type="submit"]:focus-within,
+.get-started-form button[id^="previous"]:hover,
+.get-started-form button[id^="next"]:hover,
+.get-started-form button[type="submit"]:hover {
+    border: 2px solid var(--red);
+    box-shadow: inset 0 0 2px 2px var(--text-color-light);
+}
+
+.get-started-form button[id^="previous"] span,
+.get-started-form button[id^="next"] span,
+.get-started-form button[type="submit"] span {
+    display: none;
 }
 
 #success {
@@ -300,6 +372,15 @@ form {
     height: 100%;
 }
 
+#success h2 {
+    margin-block-end: 0;
+    font-weight: 500;
+}
+
+#success p {
+    margin-block-end: 2rem;
+}
+ 
 #success:target {
     display: flex;
     flex-direction: column;
@@ -310,19 +391,38 @@ form {
     display: none;
 }
 
+@media screen and (min-width: 568px) {
+    .get-started-form button[id^="previous"] ,
+    .get-started-form button[id^="next"]  {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .get-started-form .step-name {
+        margin-block-end: 0;
+        padding-block-end: 0;
+    }
+}
+
 @media screen and (min-width: 900px) {
     .header.area-1 {
         display: grid;
         padding-block-start: 0;
         margin-block-start: 0;
         gap:  0;
-        grid-template-columns: 45px 1fr 95px 1fr;
+        grid-template-columns: 45px 500px 95px 1fr 45px;
         grid-template-rows: 100px max-content 1fr 60px;
         grid-template-areas: 
-                ". logo  . ."
-                ". sitename . photo"
-                ". form     . photo"
-                ". form     . photo";
+                ". logo     . . . "
+                ". sitename sitename sitename . "
+                ". form     . photo . "
+                ". form     . photo . ";
+    }
+
+    .header.area-1 .logo {
+        margin-block-start: 4rem;
     }
 
     .header.area-1 h1  { 
@@ -340,7 +440,7 @@ form {
         margin-block-start: 0;
     }
 
-    .header.area-1 img {
+    .header.area-1 .portrait {
         grid-area: photo;
         position: relative;
     }
@@ -381,26 +481,50 @@ form {
         padding-right: 2rem;
     }
 
-    .get-started-form .formfooter {
-        display: flex;
-        gap: 15px;
-        justify-content: space-between;
-        flex-direction: row;
+    .get-started-form .field:has(textarea) {
+        display: inherit; 
+    }
+    .get-started-form .field:has(textarea) textarea { 
+        min-height: auto;
     }
 
     .get-started-form button[id^="previous"],
     .get-started-form button[id^="next"] {
         font-size: 1.125rem; 
+        min-width: 150px;
+        width: 45%;
     }
 
-    .get-started-form button[id^="next"] {
-        margin-inline-start: auto;
+    .get-started-form button[id^="next"] span,
+    .get-started-form button[id^="previous"] span,
+    .get-started-form button[type="submit"] span {
+        display: inline;
     }
 
     #success {
         display: none;
         text-align: center;
         font-size: var(--font-size-large-mobile);
+    }
+}
+
+@media screen and (min-width: 1100px) {
+    .header.area-1 {
+        display: grid;
+        padding-block-start: 0;
+        margin-block-start: 0;
+        gap:  0;
+        grid-template-columns: 45px 1fr 95px 1fr 45px;
+        grid-template-rows: 100px max-content 1fr 60px;
+        grid-template-areas: 
+                ". logo  . . ."
+                ". sitename . photo ."
+                ". form     . photo ."
+                ". form     . photo .";
+    }
+
+    .get-started-form .field:has(textarea) textarea {
+        margin-block-start: 2rem;
     }
 }
 
@@ -411,6 +535,7 @@ form {
     font-style: italic;
     font-weight: 500;
     text-align: center;
+    text-wrap: pretty;
 }
 
 ol.steps {
@@ -471,16 +596,52 @@ ol.steps .step_arrow {
     transform: rotate(90deg);
 }
 
+
+@media screen and (min-width: 568px) {
+    ol.steps {
+        max-width: 50%;
+        margin-inline: auto;
+    }
+}
+
 @media screen and (min-width: 900px) {
+    ol.steps {
+        display: grid;
+        grid-template-columns: 3fr 3fr 3fr;
+        max-width: 100%;
+    }
+
+    ol.steps li,
+    ol.steps li:last-child {
+        grid-template-columns: 1fr 1fr 1px;
+        grid-template-rows: 1fr 1fr;
+            grid-template-areas: 
+                    "step_number  step_title"
+                    "step_content step_content";
+    }
+
+    ol.steps .step_arrow {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1000px) {
     .area-2 > h2 {
         font-size: var(--font-size-huge-desktop);
     }
 
     ol.steps {
-        display: grid;
-        grid-template-columns: 4fr 4fr 3fr;
+        grid-template-columns: 3fr 3fr 3fr;
     }
 
+    ol.steps .step_number {
+        inline-size: 115px;
+        block-size: 115px;
+        font-size: var(--font-size-huge-desktop);
+    }
+}
+
+@media screen and (min-width: 1100px) {
     ol.steps li {
         list-style-type: none; 
         grid-template-columns: 115px 1fr 130px;
@@ -498,38 +659,31 @@ ol.steps .step_arrow {
                 "step_content step_content .";
     }
 
-    ol.steps .step_number {
-        inline-size: 115px;
-        block-size: 115px;
-        font-size: var(--font-size-huge-desktop);
-    }
-
     ol.steps .step_arrow {
+        display: inherit;
         align-self: end;
         justify-self: start;
         padding-right: 3rem;
         transform: rotate(0deg);
     }
 }
-
-
-@media screen and (min-width: 550px) {
-}
-
 /* --------- */
 
 .benefits-wrapper {
+    padding-block-start: 0;
     font-size: var(--font-size-mobile);
     display: grid;
     grid-auto-rows: max-content;
     grid-template-areas: 
             "call-to-action"
+            "section-title"
             "benefits-1"
             "puppy"
             "benefits-2";
 }
 
 .benefits-wrapper h2 {
+    grid-area: section-title;
     text-align: center;
     font-size: var(--font-size-large-mobile);
     margin-block-start: 2.625rem;
@@ -542,7 +696,7 @@ ol.steps .step_arrow {
     background-color: var(--background-primary-color);
     padding: 53px;
     text-wrap: pretty;
-    margin-inline: -57px;
+    margin-inline: var(--negative-trick-margin);
 }
 
 .benefits-wrapper .benefits:nth-child(3) h3 {
@@ -561,25 +715,50 @@ ol.steps .step_arrow {
     background-color: var(--background-primary-color);
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 568px) {
     .benefits-wrapper  {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0 100px;
         font-size: var(--font-size-desktop);
     }
 
     .benefits-wrapper h2 { 
-        grid-column: span 2;
         font-size: var(--font-size-large-desktop);
+    }
+
+    .benefits-wrapper .call-to-action {
+        font-size: var(--font-size-large-desktop);
+    }
+
+    .benefits-wrapper .benefits h3 { 
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .benefits-wrapper .puppy img {
+        object-position: center;
+        object-fit: cover;
+        width: 100%;
+        position: relative;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 958px) {
+    .benefits-wrapper  {
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem 6rem;
+        grid-auto-rows: max-content;
+        grid-template-areas: 
+                "section-title section-title"
+                "call-to-action benefits-1"
+                "benefits-2 puppy";
     }
 
     .benefits-wrapper .call-to-action {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        font-size: var(--font-size-large-desktop);
         margin-inline: 0;
+        font-size: 2.5rem;
     }
 
     .benefits-wrapper .benefits {
@@ -588,10 +767,17 @@ ol.steps .step_arrow {
         justify-content: center;
     }
 
+    .benefits-wrapper .benefits-1 {
+        grid-area: benefits-1
+    }
+
+    .benefits-wrapper .benefits-2 {
+        grid-area: benefits-2
+    }
+
     .benefits-wrapper .benefits h3 {
-        font-size: var(--font-size-medium-desktop);
-        font-weight: 500;
         margin-block-end: 2rem;
+        font-size: 2.5rem;
     }
 
     .benefits-wrapper .benefits p:has(+ h3) {
@@ -604,31 +790,34 @@ ol.steps .step_arrow {
     }
 }
 
+@media screen and (min-width: 1150px) {
+    .benefits-wrapper .benefits h3 {
+        font-size: var(--font-size-medium-desktop);
+    }
+}
 
 @media screen and (min-width: 1750px) {
     .benefits-wrapper  {
         display: grid;
-        grid-template-columns: 1fr 1fr;
         gap: 0 140px;
     }
 }
 
 /* --------- */
 
-.about-wrapper .puppy img {
-    object-fit: cover;
-    width: 100%;
-}
-
 .about-wrapper .puppy {
     background-color: #000;
     overflow-x: clip;
+    margin-inline: var(--negative-trick-margin);
 }
 
 .about-wrapper .puppy img {
+    object-fit: cover;
+    width: 100%;
     box-shadow: 10px 10px 15px 5px rgba(0, 0, 0, 0.25);
     position: relative;
     z-index: 1;
+    height: 100%;
 }
 
 .about-wrapper .about-noelle {
@@ -638,7 +827,7 @@ ol.steps .step_arrow {
     font-size: var(--font-size-mobile);
     font-weight: 300;
     position: relative;
-    margin-inline: -57px;
+    margin-inline: var(--negative-trick-margin);
     padding-block-end: 140px;
 }
 
@@ -654,7 +843,7 @@ ol.steps .step_arrow {
     bottom: 62px;
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 768px) {
     .about-wrapper {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -663,6 +852,7 @@ ol.steps .step_arrow {
     .about-wrapper .puppy {
         overflow-y: clip;
         overflow-x: visible;
+        margin-inline: 0;
     }
 
     .about-wrapper .puppy img {
@@ -705,14 +895,14 @@ ol.steps .step_arrow {
     text-shadow: 0 0 55px var(--background-primary-color-form);
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 768px) {
     .area-4 {
         font-size: var(--font-size-huge-desktop);
         /* padding: 305px 0; */
     }
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 768px) {
     .dark,
     .puppy {
         margin-inline: 0;
@@ -725,7 +915,7 @@ ol.steps .step_arrow {
 }
 
 .cta {
-    padding: 2rem 2.5rem;
+    padding: 1.5rem 2.5rem;
     font-size: var(--font-size-medium-mobile);
     color: var(--text-color-cta);
     border: 3px solid var(--text-color-cta);
@@ -735,6 +925,14 @@ ol.steps .step_arrow {
     text-decoration: none;
 }
 
+
+@media screen and (min-width: 568px) {
+    .cta {
+        display: inline-block;
+        padding: 1.5rem 4rem;
+    }
+}
+
 .cta:hover,
 .cta:focus-visible {
     color: var(--text-color-light);
@@ -742,7 +940,7 @@ ol.steps .step_arrow {
     background-color: var(--button-secondary-color-form);
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 768px) {
     .large {
         font-size: var(--font-size-large-desktop);
     }
@@ -775,7 +973,7 @@ footer a {
     width: 100%;
 }
 
-@media screen and (min-width: 550px) {
+@media screen and (min-width: 768px) {
     footer a {
         text-align: left;
     }

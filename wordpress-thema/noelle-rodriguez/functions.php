@@ -263,6 +263,23 @@ function change_editor_options($arr){
 }
 add_filter('tiny_mce_before_init', 'change_editor_options');
 
+// Remove 'customizer' from the admin bar 
+add_action( 'wp_before_admin_bar_render', 'wpse200296_before_admin_bar_render' ); 
+
+function wpse200296_before_admin_bar_render()
+{
+    global $wp_admin_bar;
+
+    $wp_admin_bar->remove_menu('customize');
+}
+
+// Add css to admin
+
+function enqueue_admin_custom_css() {
+wp_enqueue_style( 'admin-custom', get_stylesheet_directory_uri() . '/admin-custom.css' );
+}
+add_action( 'admin_enqueue_scripts', 'enqueue_admin_custom_css' );
+
 
 // add Advanced Custom Fields settings for the Homepage template
 require get_template_directory() . '/inc/setup-ACF-home.php';
@@ -277,3 +294,16 @@ function enqueue_form_handler_script() {
 }
 
 add_action('init', 'enqueue_form_handler_script');
+
+add_action( 'phpmailer_init', 'my_phpmailer_smtp' );
+function my_phpmailer_smtp( $phpmailer ) {
+    $phpmailer->isSMTP();
+    $phpmailer->Host = SMTP_server;
+    $phpmailer->SMTPAuth = SMTP_AUTH;
+    $phpmailer->Port = SMTP_PORT;
+    $phpmailer->Username = SMTP_username;
+    $phpmailer->Password = SMTP_password;
+    $phpmailer->SMTPSecure = SMTP_SECURE;
+    $phpmailer->From = SMTP_FROM;
+    $phpmailer->FromName = SMTP_NAME;
+}

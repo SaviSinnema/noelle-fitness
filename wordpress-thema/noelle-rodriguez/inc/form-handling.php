@@ -43,14 +43,14 @@ function handle_form_submission() {
 
     $headers = array('Content-Type: text/html; charset=UTF-8');
 
-    if (wp_mail($to, $subject, $message, $headers)) {
+    $sent = wp_mail($to, $subject, strip_tags($message), $headers);
+
+    if ($sent) {
         echo json_encode(array('success' => true));
     } else {
         $last_error = error_get_last();
         $error_message = isset($last_error['message']) ? $last_error['message'] : 'Unknown error';
         echo json_encode(array('success' => false, 'error' => $error_message));
     }
-
-    wp_die();
 }
 ?>

@@ -64,7 +64,9 @@ get_header();
     while( have_rows('the_program_includes') ): the_row(); ?>
 
     <section class="area-3 area-split benefits-wrapper">
-        <h2>Tailored program includes</h2>
+        <?php if (get_sub_field('benefits_title')): ?>
+            <h2><?php the_sub_field('benefits_title'); ?></h2>
+        <?php endif; ?>
 
     <?php 
         if( have_rows('call_to_action') ): 
@@ -90,21 +92,20 @@ get_header();
         <?php endwhile; 
             endif; 
         ?>
-            <div class="benefits">
+            <div class="benefits benefits-1">
                 <?php the_sub_field('benefits_part_1'); ?>
             </div>
-            <div class="benefits">
+            <div class="benefits benefits-2">
                 <?php the_sub_field('benefits_part_2'); ?>
             </div>
 
-            <div class="puppy">
-                <?php if( get_field('benefits_photo') ): 
-                    $benefits_photo = get_field('benefits_photo'); //acf field name ?>
+            <div class="puppy <?php if (get_sub_field('maak_foto_puur_decoratief')): ?>decorative<?php endif; ?>">
+                <?php if( get_sub_field('benefits_photo') ): 
+                    $benefits_photo = get_sub_field('benefits_photo'); //acf field name ?>
                     <img src="<?php echo esc_url($benefits_photo['url']); ?>" alt="<?php echo esc_attr($benefits_photo['alt']); ?>" />
                 <?php else: ?>
                     <!-- <img src="<?php echo get_template_directory_uri(); ?>/media/noelle-rodriguez-small.jpeg" width="605" height="908" alt="Noelle Rodriguez smiling in the gym"> -->
                 <?php endif; ?>
-
 
             </div>
     </div>
@@ -145,12 +146,14 @@ endif; ?>
 <?php endwhile; endif; ?>
 
 <footer>
-    <?php if( get_field('general_logo') ): 
-        $general_logo = get_field('general_logo'); ?>
-        <img src="<?php echo esc_url($general_logo['url']); ?>" alt="<?php echo esc_attr($general_logo['alt']); ?>" />
-    <?php else: ?>
-        <img src="<?php echo get_template_directory_uri(); ?>/media/logo.png" width="231" height="101" alt="Noelle Rodriguez Fitness logo">
-    <?php endif; ?>
+    <a href="#">
+        <?php if( get_field('general_logo') ): 
+            $general_logo = get_field('general_logo'); ?>
+            <img src="<?php echo esc_url($general_logo['url']); ?>" alt="<?php echo esc_attr($general_logo['alt']); ?>" />
+        <?php else: ?>
+            <img src="<?php echo get_template_directory_uri(); ?>/media/logo.png" width="231" height="101" alt="Noelle Rodriguez Fitness logo">
+        <?php endif; ?>
+    </a>
 
     <p>
         <a href="<?php the_sub_field('terms-and-conditions'); ?>">Terms and Conditions</a>

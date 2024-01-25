@@ -1,7 +1,6 @@
 <?php
-    add_action( 'acf/include_fields', function() {
-	
-    if ( ! function_exists( 'acf_add_local_field_group' ) ) {
+add_action( 'acf/include_fields', function() {
+	if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		return;
 	}
 
@@ -58,26 +57,6 @@
 			'max_size' => '',
 			'mime_types' => '',
 			'preview_size' => 'medium',
-		),
-		array(
-			'key' => 'field_65ad9766a0eb0',
-			'label' => 'Form',
-			'name' => 'cta_form',
-			'aria-label' => '',
-			'type' => 'text',
-			'instructions' => '',
-			'required' => 0,
-			'conditional_logic' => 0,
-			'wrapper' => array(
-				'width' => '',
-				'class' => '',
-				'id' => '',
-			),
-			'default_value' => '',
-			'maxlength' => '',
-			'placeholder' => '',
-			'prepend' => '',
-			'append' => '',
 		),
 		array(
 			'key' => 'field_65ad97d3a0eb1',
@@ -293,7 +272,7 @@
 		),
 		array(
 			'key' => 'field_65ad9933a0ebd',
-			'label' => 'Het aanbod omvat',
+			'label' => 'Het aanbod',
 			'name' => 'the_program_includes',
 			'aria-label' => '',
 			'type' => 'group',
@@ -307,6 +286,26 @@
 			),
 			'layout' => 'block',
 			'sub_fields' => array(
+				array(
+					'key' => 'field_65b18bf942882',
+					'label' => 'Titel',
+					'name' => 'benefits_title',
+					'aria-label' => '',
+					'type' => 'text',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'default_value' => 'Tailored program includes',
+					'maxlength' => '',
+					'placeholder' => '',
+					'prepend' => '',
+					'append' => '',
+				),
 				array(
 					'key' => 'field_65ad998da0ebf',
 					'label' => 'Call to action',
@@ -459,6 +458,26 @@ Offering continuous tailored meal plans that help you to achieve your goals whil
 					'mime_types' => '',
 					'preview_size' => 'medium',
 				),
+				array(
+					'key' => 'field_65b18c989c755',
+					'label' => 'Maak foto puur decoratief',
+					'name' => 'maak_foto_puur_decoratief',
+					'aria-label' => '',
+					'type' => 'true_false',
+					'instructions' => '',
+					'required' => 0,
+					'conditional_logic' => 0,
+					'wrapper' => array(
+						'width' => '',
+						'class' => '',
+						'id' => '',
+					),
+					'message' => '',
+					'default_value' => 0,
+					'ui' => 0,
+					'ui_on_text' => '',
+					'ui_off_text' => '',
+				),
 			),
 		),
 		array(
@@ -583,6 +602,7 @@ Offering continuous tailored meal plans that help you to achieve your goals whil
 
 My approach to health and fitness is all about sustainability. I believe that you should incorporate changes only if you plan on doing them for the rest of your life. Therefore you need attainable changes and a balanced lifestyle which allows you to reach your goals and maintain a happy and healthy life.
 
+
 A healthy lifestyle extends beyond the physical, I want to help you in your overall well-being. Your nutrition plan goes beyond calorie counting, focusing on nourishing your body with the right nutrients. Together we work towards creating a sustainable and healthy lifestyle beyond the gym. Every individual is different and so are their fitness aspirations. My online coaching program crafts workout and nutrition plans from scratch to cater your specific needs.',
 					'tabs' => 'all',
 					'toolbar' => 'full',
@@ -642,5 +662,6 @@ A healthy lifestyle extends beyond the physical, I want to help you in your over
 	'show_in_rest' => 0,
 ) );
 } );
+
 
 
