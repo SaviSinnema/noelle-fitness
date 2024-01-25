@@ -17,7 +17,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-    <title>Noelle Rodriguez Online Coaching</title>
+    <title>Noëlle Rodriguez Online Coaching</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +41,7 @@
     <?php endif; ?>
 
     <h1>
-        <span class="first-name">No&euml;lle</span> Rodriguez <p class="extra-info">Online Coaching</p>
+        <span class="first-name">Noëlle</span> Rodriguez <p class="extra-info">Online Coaching</p>
     </h1>
     
     <?php if( get_field('header_photo') ): 
@@ -56,14 +56,18 @@
     <?php endif; ?>
     
     <div class="get-started-form" id="get-started">
-        <!-- if in temp mode -->
-        <div class="form-wrapper">
-            <div >
-                <p style="font-size: 2rem">Soon, you'll be able to sign up for my coaching sessions.</p>
-                <p  style="font-size: 2rem">Please check back with me later!</p>
+        <?php if( get_field('form-open') ): ?>
+            <?php include get_template_directory() . '/get_started_form.php'; ?>
+        <?php else: ?>
+            <div class="form-wrapper">
+                <div>
+                    <p style="font-size: 2rem">Soon, you'll be able to sign up for my coaching sessions.</p>
+                    <p style="font-size: 2rem">Please check back with me later!</p>
+                </div>
             </div>
-        </div>
-
-        <!-- <?php # include get_template_directory() . '/get_started_form.php'; ?> -->
+        <?php endif; ?>
     </div>
 </header>
+
+
+

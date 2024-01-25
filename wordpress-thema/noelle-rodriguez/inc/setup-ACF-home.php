@@ -9,6 +9,59 @@ add_action( 'acf/include_fields', function() {
 	'title' => 'Homepage',
 	'fields' => array(
 		array(
+			'key' => 'field_65b2c9b97d4d1',
+			'label' => 'Toon het formulier',
+			'name' => 'form-open',
+			'aria-label' => '',
+			'type' => 'true_false',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'message' => 'Accepteer aanmeldingen',
+			'default_value' => 0,
+			'ui' => 0,
+			'ui_on_text' => '',
+			'ui_off_text' => '',
+		),
+		array(
+			'key' => 'field_65b2ca117d4d2',
+			'label' => 'Als het formulier gesloten is',
+			'name' => 'als_het_formulier_gesloten_is',
+			'aria-label' => '',
+			'type' => 'wysiwyg',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => array(
+				array(
+					array(
+						'field' => 'field_65b2c9b97d4d1',
+						'operator' => '!=',
+						'value' => '1',
+					),
+				),
+			),
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '<div class="form-wrapper">
+								<div>
+										<p style="font-size: 2rem">Soon, you\'ll be able to sign up for my coaching sessions.</p>
+										<p	style="font-size: 2rem">Please check back with me later!</p>
+								</div>
+						</div>',
+			'tabs' => 'all',
+			'toolbar' => 'full',
+			'media_upload' => 1,
+			'delay' => 0,
+		),
+		array(
 			'key' => 'field_65ad96bfbc2de',
 			'label' => 'Logo',
 			'name' => 'general_logo',
@@ -642,7 +695,23 @@ A healthy lifestyle extends beyond the physical, I want to help you in your over
 				'class' => '',
 				'id' => '',
 			),
-			'return_format' => 'url',
+			'return_format' => 'array',
+		),
+		array(
+			'key' => 'field_65b2cb8389c6c',
+			'label' => 'Privacy statement link',
+			'name' => 'privacy-statement',
+			'aria-label' => '',
+			'type' => 'link',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'array',
 		),
 	),
 	'location' => array(

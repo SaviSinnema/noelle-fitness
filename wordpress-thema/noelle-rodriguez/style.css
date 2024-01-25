@@ -76,14 +76,6 @@ section {
     padding-block-end: 0;
 }
 
-@media screen and (min-width: 768px) {
-    header,
-    footer,
-    section {
-        padding-inline: 57px;
-    }
-}
-
 @media screen and (min-width: 958px) {
     header,
     footer,
@@ -459,6 +451,10 @@ section {
         grid-area: photo;
         position: relative;
     }
+    
+    .header.area-1 .portrait img {
+        max-height: 906px;
+    }
 
     .header.area-1 .get-started-form {
         grid-area: form;
@@ -467,6 +463,10 @@ section {
         align-items: flex-end;
         justify-content: center;
         margin-inline: 0;
+    }
+
+    .header.area-1 .get-started-form form {
+        height: 100%;
     }
 
     .header.area-1 .form-wrapper {
@@ -498,6 +498,7 @@ section {
 
     .get-started-form .field:has(textarea) {
         display: inherit; 
+        height: 100%;
     }
     .get-started-form .field:has(textarea) textarea { 
         min-height: auto;
@@ -986,10 +987,44 @@ footer a {
     text-align: center;
     margin-top: 2rem;
     width: 100%;
+    color: var(--text-color-dark);
+}
+
+footer a:hover,
+footer a:focus,
+footer a:visited,
+footer a:active {
+    color: var(--text-color-dark);
+}
+
+footer nav ul {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+footer nav  li {
+    list-style-type: none;
+    display: block;
 }
 
 @media screen and (min-width: 768px) {
     footer a {
         text-align: left;
+    }
+
+    footer nav ul {
+        margin: 0;
+        padding: 0;
+        text-align: left;
+    }
+
+    footer nav  li {
+        list-style-type: none;
+        display: inline-block;
+    }
+
+    footer nav li + li {
+        margin-inline-start: 2rem;
     }
 }

@@ -104,7 +104,7 @@ get_header();
                     $benefits_photo = get_sub_field('benefits_photo'); //acf field name ?>
                     <img src="<?php echo esc_url($benefits_photo['url']); ?>" alt="<?php echo esc_attr($benefits_photo['alt']); ?>" />
                 <?php else: ?>
-                    <!-- <img src="<?php echo get_template_directory_uri(); ?>/media/noelle-rodriguez-small.jpeg" width="605" height="908" alt="Noelle Rodriguez smiling in the gym"> -->
+                    <img src="<?php echo get_template_directory_uri(); ?>/media/noelle-rodriguez-small.jpeg" width="605" height="908" alt="Noelle Rodriguez smiling in the gym"> 
                 <?php endif; ?>
 
             </div>
@@ -133,7 +133,7 @@ endif; ?>
                     if( !empty( $picture_in_footer ) ): ?>
                         <img src="<?php echo esc_url($picture_in_footer['url']); ?>" alt="<?php echo esc_attr($picture_in_footer['alt']); ?>" />
                     <?php else: ?>
-                        <img src="media/noelle-dumbbell-small.jpeg" width="764" height="1144" alt="Noelle Rodriguez squatting in front of a dumbbell">
+                        <img src="<?php echo get_template_directory_uri(); ?>/media/noelle-dumbbell-small.jpeg" width="764" height="1144" alt="Noelle Rodriguez squatting in front of a dumbbell">
                     <?php endif; ?>
             </div>
             <div class="about-noelle">
@@ -156,9 +156,35 @@ endif; ?>
         <?php endif; ?>
     </a>
 
-    <p>
-        <a href="<?php the_field('terms-and-conditions'); ?>">Terms and Conditions</a>
-    </p>
+                    
+    <nav>
+        <ul>
+            <?php 
+            $terms_and_conditions = get_field('terms-and-conditions');
+            if( $terms_and_conditions ): 
+                $terms_and_conditions_url = $terms_and_conditions['url'];
+                $terms_and_conditions_title = $terms_and_conditions['title'];
+                $terms_and_conditions_target = $terms_and_conditions['target'] ? $terms_and_conditions['target'] : '_self';
+            ?>
+                <li>
+                    <a href="<?php echo esc_url( $terms_and_conditions_url ); ?>" target="<?php echo esc_attr( $terms_and_conditions_target ); ?>"><?php echo esc_html( $terms_and_conditions_title ); ?></a>
+                </li>
+            <?php endif; ?>
+
+            <?php 
+            $privacy = get_field('privacy-statement');
+            if( $privacy ): 
+                $privacy_url = $privacy['url'];
+                $privacy_title = $privacy['title'];
+                $privacy_target = $privacy['target'] ? $privacy['target'] : '_self';
+            ?>
+                <li>
+                    <a href="<?php echo esc_url( $privacy_url ); ?>" target="<?php echo esc_attr( $privacy_target ); ?>"><?php echo esc_html( $privacy_title ); ?></a>
+                </li>
+            <?php endif; ?>
+
+        </ul>
+    </nav>
 
 </footer>
 
