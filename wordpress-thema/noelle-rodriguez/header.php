@@ -56,7 +56,7 @@
     <?php endif; ?>
     
     <div class="get-started-form" id="get-started">
-        <?php if( get_field('form-open') ): ?>
+        <?php if( get_field('form-open', 18) ): ?>
             <?php include get_template_directory() . '/get_started_form.php'; ?>
         <?php else: ?>
             <div class="form-wrapper">
