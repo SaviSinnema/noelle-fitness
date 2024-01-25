@@ -56,6 +56,14 @@
     <?php endif; ?>
     
     <div class="get-started-form" id="get-started">
-        <?php include get_template_directory() . '/get_started_form.php'; ?>
+        <!-- if in temp mode -->
+        <div class="form-wrapper">
+            <div >
+                <p style="font-size: 2rem">Soon, you'll be able to sign up for my coaching sessions.</p>
+                <p  style="font-size: 2rem">Please check back with me later!</p>
+            </div>
+        </div>
+
+        <!-- <?php # include get_template_directory() . '/get_started_form.php'; ?> -->
     </div>
 </header>
