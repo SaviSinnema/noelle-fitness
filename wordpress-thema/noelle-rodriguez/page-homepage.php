@@ -126,6 +126,7 @@ endif; ?>
     while( have_rows('about_noelle') ): the_row(); 
 ?>
         <section class="area-5 area-split about-wrapper">
+            <h2 class="sr-only">About me</h2>
             <div class="puppy">
                 <?php 
                     $picture_in_footer = get_sub_field('picture_in_footer'); //acf field name
@@ -156,7 +157,7 @@ endif; ?>
     </a>
 
     <p>
-        <a href="<?php the_sub_field('terms-and-conditions'); ?>">Terms and Conditions</a>
+        <a href="<?php the_field('terms-and-conditions'); ?>">Terms and Conditions</a>
     </p>
 
 </footer>

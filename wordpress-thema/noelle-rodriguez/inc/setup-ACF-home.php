@@ -628,6 +628,22 @@ A healthy lifestyle extends beyond the physical, I want to help you in your over
 				),
 			),
 		),
+		array(
+			'key' => 'field_65b1abecaaecf',
+			'label' => 'Terms & Conditions link',
+			'name' => 'terms-and-conditions',
+			'aria-label' => '',
+			'type' => 'link',
+			'instructions' => '',
+			'required' => 0,
+			'conditional_logic' => 0,
+			'wrapper' => array(
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'return_format' => 'url',
+		),
 	),
 	'location' => array(
 		array(
@@ -662,6 +678,4 @@ A healthy lifestyle extends beyond the physical, I want to help you in your over
 	'show_in_rest' => 0,
 ) );
 } );
-
-
 
