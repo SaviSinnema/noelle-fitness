@@ -122,6 +122,23 @@ section {
 	white-space: nowrap !important;
 }
 
+/* Skip link styles */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: var(--red);
+    color: #fff;
+    padding: 8px;
+    z-index: 1000;
+    text-decoration: none;
+    transition: top 0.3s ease-in-out;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 /* --------- */
 
 .header.area-1 {
@@ -131,7 +148,8 @@ section {
     margin-block-start: 0;
     gap:  0;
     grid-template-columns: 45px 1fr 57px;
-    grid-template-rows: 90px 1fr 1fr;
+    grid-template-rows: 90px 1fr 3fr;
+    /* grid-template-rows: 90px 1fr 1fr; */
     grid-template-areas: 
             ". logo ."
             ". sitename ."
@@ -306,6 +324,7 @@ section {
     text-align: left;
     font-family: inherit;
     font-size: inherit;
+    transition: border-color 0.3s ease-in-out;
 }
 
 .get-started-form input[type="radio"] + label {
@@ -369,6 +388,10 @@ section {
 .get-started-form button[id^="next"] span,
 .get-started-form button[type="submit"] span {
     display: none;
+}
+
+.get-started-form .required-field {
+    color: var(--red);
 }
 
 #success {

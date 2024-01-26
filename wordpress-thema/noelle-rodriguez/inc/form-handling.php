@@ -25,20 +25,23 @@ function handle_form_submission() {
 
     // Send email notification
     $to = 'mail@annekesinnema.nl';
-    $subject = 'Nieuwe aanmelding';
+    $subject = "Nieuwe aanmelding: $name";
 
-    $message = "Name: $name<br />";
-    $message .= "Email: $email\n";
-    $message .= "Phone: $phone\n";
-    $message .= "Instagram: $instagram\n\n";
+    $message = "<dl>";
+    $message .= "<dt><strong>Name:</strong></dt><dd><br />$name</dd>";
+    $message .= "<dt><br /><strong>Email:</strong></dt><dd><br />$email</dd>";
+    $message .= "<dt><br /><strong>Phone:</strong></dt><dd><br />$phone</dd>";
+    $message .= "<dt><br /><strong>Instagram:</strong></dt><dd><br /><a href='https://www.instagram.com/$instagram'>https://www.instagram.com/$instagram</a></dd></dl>";
 
-    $message .= "Goal: $goal\n";
-    $message .= "Gender: $gender\n";
-    $message .= "Age: $age\n\n";
+    $message .= "<br /><br /><dl>";
+    $message .= "<dt><strong>Goal:</strong></dt><dd><br />$goal</dd>";
+    $message .= "<dt><br /><strong>Gender:</strong></dt><dd><br />$gender</dd>";
+    $message .= "<dt><br /><strong>Age:</strong></dt><dd><br />$age</dd></dl>";
 
-    $message .= "Motivation:\n$motivation\n\n";
-    $message .= "Why me:\n$whyme\n\n";
-    $message .= "Best Outcome:\n$best_outcome\n";
+    $message .= "<br /><br /><dl>";
+    $message .= "<dt><strong>Motivation:</strong></dt><dd><br />$motivation</dd>";
+    $message .= "<dt><br /><strong>Why me:</strong></dt><dd><br />$whyme</dd>";
+    $message .= "<dt><br /><strong>Best Outcome:</strong></dt><dd><br />$best_outcome</dd></dl>";
 
     $headers = array('Content-Type: text/html; charset=UTF-8');
 

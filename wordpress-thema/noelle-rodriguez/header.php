@@ -68,6 +68,3 @@
         <?php endif; ?>
     </div>
 </header>
-
-
-

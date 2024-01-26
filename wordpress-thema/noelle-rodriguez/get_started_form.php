@@ -8,11 +8,11 @@
     <form id="get-started" method="post" action="<?php echo esc_url(get_permalink()); ?>#success">
         <fieldset class="form-step" id="step-1">
             <legend class="step-name">
-                What do you want to achieve?
+                What do you want to achieve? <span class="required-field" aria-label="(required)">*</span>
             </legend>
 
             <div class="field">
-                <input type="radio" name="goal" id="weight" value="Weight loss">
+                <input type="radio" name="goal" id="weight" value="Weight loss" required>
                 <label for="weight">Weight loss</label>
             </div>
             <div class="field">
@@ -30,18 +30,18 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="next-1"><span>Next</span></button>
+                <button type="button" id="next-1" aria-label="Next step" aria-label="Next step"><span>Next</span></button>
             </div>
         </fieldset>
 
         <!-- Step 2 -->
         <fieldset class="form-step" id="step-2">
             <legend class="step-name">
-                What is your gender?
+                What is your gender? <span class="required-field" aria-label="(required)">*</span>
             </legend>
 
             <div class="field">
-                <input type="radio" name="gender" value="Male" id="male">
+                <input type="radio" name="gender" value="Male" id="male" required>
                 <label for="male">Male</label>
             </div>
 
@@ -51,8 +51,8 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-2"><span>Previous</span></button>
-                <button type="button" id="next-2"><span>Next</span></button>
+                <button type="button" id="previous-2" aria-label="Go back a step"><span>Previous</span></button>
+                <button type="button" id="next-2" aria-label="Next step"><span>Next</span></button>
             </div>
 
         </fieldset>
@@ -60,11 +60,11 @@
         <!-- Step 3 -->
         <fieldset class="form-step" id="step-3">
             <legend class="step-name">
-                What is your age?
+                What is your age? <span class="required-field" aria-label="(required)">*</span>
             </legend>
 
             <div class="field">
-                <input type="radio" name="age" value="Under 18">
+                <input type="radio" name="age" value="Under 18" required>
                 <label>Under 18 </label>
             </div>
 
@@ -84,8 +84,8 @@
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-3"><span>Previous</span></button>
-                <button type="button" id="next-3"><span>Next</span></button>
+                <button type="button" id="previous-3" aria-label="Go back a step"><span>Previous</span></button>
+                <button type="button" id="next-3" aria-label="Next step"><span>Next</span></button>
             </div>
         </fieldset>
 
@@ -93,15 +93,15 @@
         <div class="form-step" id="step-4">
             <div class="field field--textarea">
                 <label for="motivation" class="step-name">
-                    What is your motivation to start now?
+                    What is your motivation to start now? <span class="required-field" aria-label="(required)">*</span>
                 </label>
 
-                <textarea name="motivation" id="motivation"></textarea>
+                <textarea name="motivation" id="motivation" required></textarea>
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-4"><span>Previous</span></button>
-                <button type="button" id="next-4"><span>Next</span></button>
+                <button type="button" id="previous-4" aria-label="Go back a step"><span>Previous</span></button>
+                <button type="button" id="next-4" aria-label="Next step"><span>Next</span></button>
             </div>
         </div>
 
@@ -109,15 +109,15 @@
         <div class="form-step" id="step-5">
             <div class="field field--textarea">
                 <label for="whyme" class="step-name">
-                    Why do you want to work with me?
+                    Why do you want to work with me? 
                 </label>
 
-                <textarea name="whyme" id="whyme"></textarea>
+                <textarea name="whyme" id="whyme" ></textarea>
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-5"><span>Previous</span></button>
-                <button type="button" id="next-5"><span>Next</span></button>
+                <button type="button" id="previous-5" aria-label="Go back a step"><span>Previous</span></button>
+                <button type="button" id="next-5" aria-label="Next step"><span>Next</span></button>
             </div>
         </div>
 
@@ -125,15 +125,15 @@
         <div class="form-step" id="step-6">
             <div class="field field--textarea">
                 <label for="best_outcome" class="step-name">
-                    What would be the best possible outcome if we were to work together?
+                    What would be the best possible outcome if we were to work together? 
                 </label>
 
                 <textarea name="best_outcome" id="best_outcome"></textarea>
             </div>
 
             <div class="formfooter">
-                <button type="button" id="previous-6"><span>Previous</span></button>
-                <button type="button" id="next-6"><span>Next</span></button>
+                <button type="button" id="previous-6" aria-label="Go back a step"><span>Previous</span></button>
+                <button type="button" id="next-6" aria-label="Next step"><span>Next</span></button>
             </div>
         </div>
 
@@ -144,13 +144,13 @@
             </legend>
 
             <div class="field">
-                <label for="name">Full name:</label>
-                <input type="text" id="name" name="name">
+                <label for="name">Full name: <span class="required-field" aria-label="(required)">*</span></label>
+                <input type="text" id="name" name="name" required>
             </div>
 
             <div class="field">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email">
+                <label for="email">Email: <span class="required-field" aria-label="(required)">*</span></label>
+                <input type="email" id="email" name="email" required>
             </div>
 
             <div class="field">
@@ -166,7 +166,7 @@
             <input type="hidden" name="submitted" value="1">
 
             <div class="formfooter">
-                <button type="button" id="previous-7"><span>Previous</span></button>
+                <button type="button" id="previous-7" aria-label="Go back a step"><span>Previous</span></button>
                 <button type="submit">Submit</button>
             </div>
         </fieldset>

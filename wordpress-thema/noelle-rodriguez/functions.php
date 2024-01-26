@@ -315,7 +315,7 @@ function remove_from_admin_bar($wp_admin_bar) {
         $wp_admin_bar->remove_node('new-content');
         //$wp_admin_bar->remove_node('wp-logo');
         //$wp_admin_bar->remove_node('site-name');
-        $wp_admin_bar->remove_node('my-account');
+        // $wp_admin_bar->remove_node('my-account');
         $wp_admin_bar->remove_node('search');
         $wp_admin_bar->remove_node('customize');
     }
@@ -327,3 +327,11 @@ function remove_from_admin_bar($wp_admin_bar) {
     $wp_admin_bar->remove_node('wp-logo');
 }
 add_action('admin_bar_menu', 'remove_from_admin_bar', 999);
+
+//Remove Gutenberg Block Library CSS from loading on the frontend
+function smartwp_remove_wp_block_library_css(){
+ wp_dequeue_style( 'wp-block-library' );
+ wp_dequeue_style( 'wp-block-library-theme' );
+ wp_dequeue_style( 'wc-blocks-style' ); // Remove WooCommerce block CSS
+} 
+add_action( 'wp_enqueue_scripts', 'smartwp_remove_wp_block_library_css', 100 );

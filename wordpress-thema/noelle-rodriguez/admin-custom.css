@@ -1,3 +1,26 @@
-.theme-actions a.hide-if-no-customize {
+.theme-actions a.hide-if-no-customize,
+#wp-admin-bar-aioseo-main.menupop  {
     display: none;
+}
+
+#acf-group_65ad96bf87522 > .inside > .acf-field-group > .acf-label {
+    font-weight: 500;
+    font-size: 2rem;
+}
+
+#acf-group_65ad96bf87522 > .inside > :not(.acf-field-group) {
+    padding-left: 50px;
+}
+
+#acf-group_65ad96bf87522 > .inside > .acf-field-group .acf-fields label,
+.acf-field-65b2c9b97d4d1 label,
+.acf-field-65ad96bfbc2de label, 
+.acf-field-65ad971da0eaf label {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+
+#acf-group_65ad96bf87522 > .inside > .acf-field-group .acf-fields input {
+    font-size: 1rem;
 }

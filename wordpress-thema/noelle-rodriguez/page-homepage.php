@@ -17,6 +17,7 @@
 get_header();
 ?>
 
+<main id="main">
 <?php if( have_rows('steps') ): 
     while( have_rows('steps') ): the_row(); 
 ?>
@@ -57,8 +58,6 @@ get_header();
         </ol>
     </section>
 <?php endwhile; endif; ?>
-
-<!-------------------->
 
 <?php if( have_rows('the_program_includes') ): 
     while( have_rows('the_program_includes') ): the_row(); ?>
@@ -144,7 +143,8 @@ endif; ?>
                 </a>
             </div>
         </section>
-<?php endwhile; endif; ?>
+    <?php endwhile; endif; ?>
+</main>
 
 <footer>
     <a href="#">

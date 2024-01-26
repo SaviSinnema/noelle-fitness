@@ -14,7 +14,7 @@ add_action( 'acf/include_fields', function() {
 			'name' => 'form-open',
 			'aria-label' => '',
 			'type' => 'true_false',
-			'instructions' => '',
+			'instructions' => 'Als dit veld niet is aangevinkt, komt er een tekst op de homepage te staan. Deze kun je naar wens aanpassen.',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -34,7 +34,7 @@ add_action( 'acf/include_fields', function() {
 			'name' => 'als_het_formulier_gesloten_is',
 			'aria-label' => '',
 			'type' => 'wysiwyg',
-			'instructions' => '',
+			'instructions' => 'Laat deze tekst zien als het formulier gesloten is en er geen nieuwe aanmeldingen worden geaccepteerd.',
 			'required' => 0,
 			'conditional_logic' => array(
 				array(
@@ -67,7 +67,7 @@ add_action( 'acf/include_fields', function() {
 			'name' => 'general_logo',
 			'aria-label' => '',
 			'type' => 'image',
-			'instructions' => '',
+			'instructions' => 'Als je hier geen logo uploadt, wordt <a href="https://noellerodriguezcoaching.com/media/logo.png" target="_blank">het standaard logo</a> getoond.',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -92,7 +92,7 @@ add_action( 'acf/include_fields', function() {
 			'name' => 'header_photo',
 			'aria-label' => '',
 			'type' => 'image',
-			'instructions' => '',
+			'instructions' => 'Als je hier geen foto uploadt, wordt <a href="https://noellerodriguezcoaching.com/media/noelle-rodriguez-small.jpeg" target="_blank">de foto uit het originele design</a> getoond.',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array(
@@ -618,7 +618,7 @@ Offering continuous tailored meal plans that help you to achieve your goals whil
 					'name' => 'picture_in_footer',
 					'aria-label' => '',
 					'type' => 'image',
-					'instructions' => '',
+					'instructions' => 'Als je hier geen foto uploadt, wordt <a href="https://noellerodriguezcoaching.com/media/noelle-dumbbell-small.jpeg" target="_blank">de foto uit het originele design</a> getoond.',
 					'required' => 0,
 					'conditional_logic' => 0,
 					'wrapper' => array(
